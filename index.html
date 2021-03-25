@@ -1,2 +1,152 @@
-<html>
+<!DOCTYPE html>
+<html  lang"en">
+<head>
+  <meta charset="utf-8"
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compativle" content="ie=edge">
+  <title>whiteWhale</title>
+  <link rel="stylesheet" type="text/css" href="ws.css">
+
+  <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@0.18.2/dist/web3.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script type="text/javascript">
+
+  //const Web3 = require("web3");
+  //web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+
+  const Web3 = require('web3');
+  //const oneAdd = require('harmony-js/crypto');
+
+  //Create web3 instance
+  const web3 = new Web3(new Web3.providers.HttpProvider("https://api.s0.b.hmny.io"));
+
+  var whiteWhaleContract = web3.eth.contract([
+      {
+        "anonymous": false,
+        "inputs": [
+      {
+        "indexed": true,
+        "name": "owner",
+        "type": "address"
+      }
+      ],
+      "name": "newOwner",
+      "type": "event"
+      },
+      {
+      "stateMutability": "payable",
+      "type": "fallback"
+      },
+      {
+        "gas": 1151,
+        "inputs": [],
+        "name": "owner",
+        "outputs": [
+          {
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "gas": 1181,
+        "inputs": [],
+        "name": "pricePaid",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      }
+    ]);
+
+
+  var whiteWhale = whiteWhaleContract.at('0xb7a0C5E6C6d1064d819C19581C77316f8B79E658');
+
+
+  whiteWhale.owner.call(function(error, result){
+         if(!error)
+             {
+                 $("#owner").html(result);
+                 console.log(result);
+             }
+         else
+             console.error(error);
+  });
+
+  whiteWhale.pricePaid.call(function(error, result){
+        if(!error)
+            {
+                $("#pricePaid").html(result.c[0]/10000 + " one");
+                console.log(result);
+            }
+        else
+            console.error(error);
+  });
+  </script>
+
+</head>
+<body>
+<div class="container">
+
+<h1>whiteWhale</h1>
+<pre>
+  0 0 0 0    0 0 0 0
+    0     0  0    0
+      0          0                                 0 0 0 0 0 0 0 0 0
+        0       0                      0 0 0 0 0 0                  0
+         0     0                 0 0 0                               0
+          0    0             0 0                                     0
+           0    0      0 0 0                                         0
+            0    0 0 0                                 0             0
+             0                                                       0
+              0                                           0 0 0 0 0 0
+                0 0                                                 0
+                    0 0 0 0 0 0                0 0 0 0 0 0 0 0 0 0 0
+                               0 0 0 0 0 0 0 0
+
+</pre>
+
+<h3>owner:</h3>
+
+<div id="owner"></div>
+
+<h3>pricePaid:</h3>
+
+<div id="pricePaid"></div>
+
+<h3>contractAddress:</h3>
+
+<div>one1k7svtekx6yrymqvur9vpcae3d79hnejcx5hjen</div>
+
+<h3>code:</h3>
+
+<pre>
+    # @version ^0.2.0
+    # whiteWhale
+    # ZERO_ARTIST
+
+    owner       :   public(address)
+    pricePaid   :   public(uint256)
+
+    @external
+    @payable
+    def __default__():
+
+        assert self.pricePaid * 2   <   msg.value
+        self.pricePaid              =   msg.value
+
+        send( self.owner , self.balance )
+
+        self.owner   =   msg.sender
+</pre>
+
+</div>
+
+</body>
 </html>
