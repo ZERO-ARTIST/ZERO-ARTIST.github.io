@@ -1,0 +1,18 @@
+body {
+    background-color:#000;
+    padding: 1em;
+    color: #fff;
+    font-family: 'Arial';
+}
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+#owner {
+    padding: 0;
+    margin: 0;
+}
+#pricePaid {
+    padding: 0;
+    margin: 0;
+}
