@@ -57,21 +57,6 @@
 
 <div>
 <pre>            
-  0 0 0 0    0 0 0 0
-    0     0  0    0
-      0          0                                 0 0 0 0 0 0 0 0 0
-        0       0                      0 0 0 0 0 0                  0
-         0     0                 0 0 0                               0
-          0    0             0 0                                     0
-           0    0      0 0 0                                         0
-            0    0 0 0                                 0             0
-             0                                                       0
-               0                                          0 0 0 0 0 0
-                 0 0 0                                              0
-                      0 0 0 0 0                0 0 0 0 0 0 0 0 0 0 0
-                               0 0 0 0 0 0 0 0
-
-
     # @version ^0.2.0
     # whiteWhale
     # ZERO_ARTIST
@@ -81,7 +66,7 @@
 
     @external
     @payable
-    def __default__():
+    def buyMe():
 
         assert self.pricePaid * 2   <=   msg.value
         self.pricePaid               =   msg.value
