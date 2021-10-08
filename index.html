@@ -21,52 +21,10 @@
   const web3 = new Web3(new Web3.providers.HttpProvider("https://api.s0.t.hmny.io"));
 
   var whiteWhaleContract = web3.eth.contract([
-      {
-        "anonymous": false,
-        "inputs": [
-      {
-        "indexed": true,
-        "name": "owner",
-        "type": "address"
-      }
-      ],
-      "name": "newOwner",
-      "type": "event"
-      },
-      {
-      "stateMutability": "payable",
-      "type": "fallback"
-      },
-      {
-        "gas": 1151,
-        "inputs": [],
-        "name": "owner",
-        "outputs": [
-          {
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "gas": 1181,
-        "inputs": [],
-        "name": "pricePaid",
-        "outputs": [
-          {
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      }
-    ]);
+      {"stateMutability":"payable","type":"function","name":"buyMe","inputs":[],"outputs":[],"gas":110985},{"stateMutability":"view","type":"function","name":"owner","inputs":[],"outputs":[{"name":"","type":"address"}],"gas":2418},{"stateMutability":"view","type":"function","name":"pricePaid","inputs":[],"outputs":[{"name":"","type":"uint256"}],"gas":2448}]
+  );
 
-
-  var whiteWhale = whiteWhaleContract.at('0x71429a44F4f575c48425a5736061EE58437aABcd');
+  var whiteWhale = whiteWhaleContract.at('0x082138b691c47773a8d2ffee453f665184959a53');
 
 
   whiteWhale.owner.call(function(error, result){
@@ -147,7 +105,7 @@
 
 <h3>contractAddress:</h3>
 
-<div>one1w9pf5385746ufpp954ekqc0wtpph427dspfvq5</div>
+<div>one1pqsn3d53c3mh82xjllhy20mx2xzftxjnckyjts</div>
 
 </div>
 </body>
