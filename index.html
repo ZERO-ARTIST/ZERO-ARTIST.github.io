@@ -6,92 +6,13 @@
   <meta http-equiv="X-UA-Compativle" content="ie=edge">
   <title>whiteWhale</title>
   <link rel="stylesheet" type="text/css" href="ws.css">
-
-  <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@0.18.2/dist/web3.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-  <script type="text/javascript">
-
-  //const Web3 = require("web3");
-  //web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
-
-  const Web3 = require('web3');
-  //const oneAdd = require('harmony-js/crypto');
-
-  //Create web3 instance
-  const web3 = new Web3(new Web3.providers.HttpProvider("https://api.s0.t.hmny.io"));
-
-  var whiteWhaleContract = web3.eth.contract([
-      {"stateMutability":"payable","type":"function","name":"buyMe","inputs":[],"outputs":[],"gas":110985},{"stateMutability":"view","type":"function","name":"owner","inputs":[],"outputs":[{"name":"","type":"address"}],"gas":2418},{"stateMutability":"view","type":"function","name":"pricePaid","inputs":[],"outputs":[{"name":"","type":"uint256"}],"gas":2448}]
-  );
-
-  var whiteWhale = whiteWhaleContract.at('0x082138b691c47773a8d2ffee453f665184959a53');
-
-
-  whiteWhale.owner.call(function(error, result){
-         if(!error)
-             {
-                 $("#owner").html(result);
-                 console.log(result);
-             }
-         else
-             console.error(error);
-  });
-
-  whiteWhale.pricePaid.call(function(error, result){
-        if(!error)
-            {
-                $("#pricePaid").html(result.c[0]/10000 + " one");
-                console.log(result);
-            }
-        else
-            console.error(error);
-  });
-  </script>
-
 </head>
   
 <body>
 <div class="container">
-
-<h1>whiteWhale</h1>
-
-<div>
-<pre>            
-    # @version ^0.2.0
-    # whiteWhale
-    # ZERO_ARTIST
-
-    owner       :   public(address)
-    pricePaid   :   public(uint256)
-
-    @external
-    @payable
-    def buyMe():
-
-        assert self.pricePaid * 2   <=   msg.value
-        self.pricePaid               =   msg.value
-
-        send( self.owner , self.balance )
-
-        self.owner   =   msg.sender
-        
-        
-        
-</pre>
-</div>
-  
-<h3>owner:</h3>
-
-<div id="owner"></div>
-  
-<h3>pricePaid:</h3>
-
-<div id="pricePaid"></div>
-
-<h3>contractAddress:</h3>
-
-<div>one1pqsn3d53c3mh82xjllhy20mx2xzftxjnckyjts</div>
-
+  <a href="./white-whale/"
+  <h3>whiteWhale</h3>
+  </a>
 </div>
 </body>
 </html>
