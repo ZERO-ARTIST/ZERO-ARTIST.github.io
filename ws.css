@@ -7,15 +7,17 @@ body {
 h1 {
   margin-top:0;
 }
+a {
+  color: white;
+  text-decoration: none;
+}
+a:visited {
+  color: white;
+}
+a:hover {
+  color: gray;
+}
 .container {
     width: 90%;
     margin: 0 auto;
-}
-#owner {
-    padding: 0;
-    margin: 0;
-}
-#pricePaid {
-    padding: 0;
-    margin: 0;
 }
